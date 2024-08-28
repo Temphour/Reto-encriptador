@@ -44,7 +44,7 @@ header {
 	align-items: center;
     margin-top: 1.7%;
     
-    margin-bottom: 2%;
+    margin-bottom: 0.5;
 	gap: .5em;
 
     
@@ -61,12 +61,13 @@ header {
 
 main {
     display: flex;
-    justify-content: space-around; /* Espacio entre los elementos principales */
+    justify-content: space-evenly;
 }
 
 .seccion-formulario {
     display: flex;
     flex-direction: column;
+    margin-left: 4%;
     justify-content: space-between; /* Espacio entre elementos en la sección del formulario */
     height: 70dvh; /* Altura de la sección del formulario */
 }
@@ -113,6 +114,7 @@ main {
 .boton-formulario {
     background: var(--color-principal); /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
+    font-weight: 500;
     font-size: 1.6rem; /* Tamaño de la fuente del botón */
     padding: 1rem 2rem; /* Relleno del botón */
     width: 328px; /* Ancho del botón */
@@ -123,14 +125,14 @@ main {
 }
 
 .boton-formulario--secundario {
-    background: var(--color-acento); /* Color de fondo del botón secundario */
-    color: white; /* Color del texto del botón secundario */
+    background: var(--color-complementario); /* Color de fondo del botón secundario */
+    color: var(--color-texto-2); /* Color del texto del botón secundario */
     font-size: 1.6rem; /* Tamaño de la fuente del botón secundario */
     padding: 1rem 2rem; /* Relleno del botón secundario */
     width: 328px; /* Ancho del botón secundario */
     height: 67px; /* Alto del botón secundario */
     border-radius: 24px; /* Bordes redondeados del botón secundario */
-    border: 1px solid var(--color-acento); /* Borde del botón secundario */
+    border: 1px solid var(--color-complementario); /* Borde del botón secundario */
     cursor: pointer;
 }
 
@@ -140,7 +142,7 @@ main {
 
 .imagen{
     margin-top: auto;
-    max-width:40rem;
+    max-width:100%;
     height: 60%;
 }
 
@@ -163,6 +165,7 @@ display: flex;
 flex-direction:column;
 justify-content: center;
 align-items: center;
+align-content: center;
 }
 
 .subtitulo{
@@ -170,6 +173,8 @@ align-items: center;
     font-weight: 600;
     font-size: 2rem;
 }
+
+
 
 
 

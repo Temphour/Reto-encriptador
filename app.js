@@ -1,101 +1,150 @@
 // Añade un evento que escucha el clic en los botones.
-// Cuando se hace clic en el botón, se llama a la respectiva funcion, encriptarTexto, desencriptarTexto, copiar texto.
+// Cuando se hace clic en el botón, se llama a la respectiva función encriptarTexto, desencriptarTexto, copiarTexto.
 document.getElementById('btnEncriptar').addEventListener('click', encriptarTexto);
 document.getElementById('btnDesencriptar').addEventListener('click', desencriptarTexto);
 document.getElementById('btnCopiar').addEventListener('click', copiarTexto);
 
-//Eventos que escuchan el clic de los botones, llaman la funcion ocultar texto e imagenes (en el cuadro resultado)
+// Función para validar el texto de entrada
+function validarTexto(texto) {
+    const regex = /^[a-z]+$/;  // Solo letras minúsculas
+    // Elimina acentos y verifica si el texto está compuesto solo por letras minúsculas
+    const textoNormalizado = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Elimina acentos
+    return regex.test(textoNormalizado) && texto === textoNormalizado; // Verifica letras minúsculas y ausencia de acentos
+}
 
-document.getElementById('btnEncriptar').addEventListener('click', OcultarImagen);
-document.getElementById('btnDesencriptar').addEventListener('click', OcultarImagen);
-document.getElementById('btnEncriptar').addEventListener('click', OcultarTexto);
-document.getElementById('btnDesencriptar').addEventListener('click', OcultarTexto);
+// Función para mostrar un mensaje de error y limpiar el texto de salida
+function mostrarError(mensaje) {
+    alert(mensaje);
+    // Limpia el área de texto de salida
+    const textoSalida = document.getElementById('textoSalida');
+    textoSalida.value = '';
+    // Oculta el área de texto de salida y el botón de copiar
+    textoSalida.classList.add('oculto');
+    document.getElementById('btnCopiar').classList.add('oculto');
+    // Muestra la imagen y el texto
+    MostrarImagenError();
+    MostrarTexto();
+    // Cambia el texto del subtitulo y del párrafo
+    cambiarTexto('subtitulo', 'El texto ingresado es inválido');
+    cambiarTexto('parrafo', 'Ingresa un texto nuevamente, en minúscula y sin acentos');
+}
 
 // Función para ocultar la imagen
 function OcultarImagen() {
-    // Selecciona la imagen usando su id
     const imagen = document.getElementById('imagen');
-    
-    // Verifica que la imagen existe antes de intentar modificar su estilo
     if (imagen) {
         imagen.style.display = 'none';
     }
 }
 
-
-//Funcion para ocultar texto cuando se encripte o desencripte un texto
+// Función para ocultar texto
 function OcultarTexto() {
-    // Selecciona el texto usando su id
     const subtitulo = document.getElementById('subtitulo');
     const parrafo = document.getElementById('parrafo');
     const mensajeinicial = document.getElementById('mensaje-inicial');
-    // Verifica que el mensaje existe antes de intentar modificar su estilo
     if (mensajeinicial) {
         parrafo.style.display = 'none';
         subtitulo.style.display = 'none';
     }
 }
 
+// Función para mostrar la imagen de error
+function MostrarImagenError() {
+    const imagen = document.getElementById('imagen');
+    if (imagen) {
+        imagen.style.display = 'block'; // Muestra la imagen
+        imagen.src = './imagenes/noencontrado.jpg'; 
+    }
+}
+
+// Función para mostrar la imagen (general)
+function MostrarImagen() {
+    const imagen = document.getElementById('imagen');
+    if (imagen) {
+        imagen.style.display = 'block'; // Muestra la imagen
+        imagen.src = './imagenes/descifrar.jpg'; // Reestablece la fuente original de la imagen
+    }
+}
+
+// Función para mostrar texto
+function MostrarTexto() {
+    const subtitulo = document.getElementById('subtitulo');
+    const parrafo = document.getElementById('parrafo');
+    const mensajeinicial = document.getElementById('mensaje-inicial');
+    if (mensajeinicial) {
+        parrafo.style.display = 'block';
+        subtitulo.style.display = 'block';
+    }
+}
+
+// Función para cambiar el texto de un elemento HTML
+function cambiarTexto(id, nuevoTexto) {
+    // Obtiene el elemento por su id
+    const elemento = document.getElementById(id);
+    
+    // Verifica si el elemento existe antes de intentar cambiar su texto
+    if (elemento) {
+        // Cambia el texto del elemento utilizando textContent
+        elemento.textContent = nuevoTexto;
+    } else {
+        console.warn(`Elemento con id ${id} no encontrado.`);
+    }
+}
+
 // Función para encriptar el texto
 function encriptarTexto() {
-    // Obtiene el valor del área de texto con id 'textoEntrada'
     const textoEntrada = document.getElementById('textoEntrada').value;
     
-    // Reemplaza las letras en el texto con sus correspondientes secuencias encriptadas
+    if (!validarTexto(textoEntrada)) {
+        mostrarError('El texto solo puede contener letras minúsculas sin acentos.');
+        return; // No continuar si el texto no es válido
+    }
+    
     const textoEncriptado = textoEntrada
-        .replace(/e/g, 'enter')  // Reemplaza 'e' con 'enter'
-        .replace(/i/g, 'imes')   // Reemplaza 'i' con 'imes'
-        .replace(/a/g, 'ai')     // Reemplaza 'a' con 'ai'
-        .replace(/o/g, 'ober')   // Reemplaza 'o' con 'ober'
-        .replace(/u/g, 'ufat');  // Reemplaza 'u' con 'ufat'
-
-    // Muestra el resultado en el área de texto de salida
+        .replace(/e/g, 'enter')
+        .replace(/i/g, 'imes')
+        .replace(/a/g, 'ai')
+        .replace(/o/g, 'ober')
+        .replace(/u/g, 'ufat');
+    
+    OcultarTexto();
+    OcultarImagen();
     mostrarResultado(textoEncriptado);
 }
 
 // Función para desencriptar el texto
 function desencriptarTexto() {
-    // Obtiene el valor del área de texto con id 'textoEntrada'
     const textoEntrada = document.getElementById('textoEntrada').value;
     
-    // Reemplaza las secuencias encriptadas con sus letras originales
+    if (!validarTexto(textoEntrada)) {
+        mostrarError('El texto solo puede contener letras minúsculas sin acentos.');
+        return; // No continuar si el texto no es válido
+    }
+    
     const textoDesencriptado = textoEntrada
-        .replace(/enter/g, 'e')  // Reemplaza 'enter' con 'e'
-        .replace(/imes/g, 'i')   // Reemplaza 'imes' con 'i'
-        .replace(/ai/g, 'a')     // Reemplaza 'ai' con 'a'
-        .replace(/ober/g, 'o')   // Reemplaza 'ober' con 'o'
-        .replace(/ufat/g, 'u');  // Reemplaza 'ufat' con 'u'
-
-    // Muestra el resultado en el área de texto de salida
+        .replace(/enter/g, 'e')
+        .replace(/imes/g, 'i')
+        .replace(/ai/g, 'a')
+        .replace(/ober/g, 'o')
+        .replace(/ufat/g, 'u');
+    
+    OcultarTexto();
+    OcultarImagen();
     mostrarResultado(textoDesencriptado);
 }
 
 // Función para mostrar el resultado en el área de texto de salida
 function mostrarResultado(texto) {
-    // Obtiene el área de texto con id 'textoSalida'
     const textoSalida = document.getElementById('textoSalida');
-    
-    // Establece el valor del área de texto de salida al texto proporcionado
     textoSalida.value = texto;
-    
-    // Elimina la clase 'oculto' para hacer visible el área de texto de salida
     textoSalida.classList.remove('oculto');
-    
-    // Elimina la clase 'oculto' del botón de copiar para hacerlo visible
     document.getElementById('btnCopiar').classList.remove('oculto');
 }
 
 // Función para copiar el texto del área de texto de salida al portapapeles
 function copiarTexto() {
-    // Obtiene el área de texto con id 'textoSalida'
     const textoSalida = document.getElementById('textoSalida');
-    
-    // Selecciona el texto en el área de texto de salida
     textoSalida.select();
-    
-    // Ejecuta el comando para copiar el texto seleccionado al portapapeles
     document.execCommand('copy');
-    
-    // Muestra una alerta indicando que el texto ha sido copiado al portapapeles
     alert('Texto copiado al portapapeles');
 }
