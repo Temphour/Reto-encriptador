@@ -1,0 +1,140 @@
+:root {
+    --color-principal: #ffbfc4; /* Rosa pastel claro */
+    --color-acento: #f09292;    /* Rosa pastel más claro */
+    --color-fondo: #fef3f3;     /* Fondo rosa muy claro */
+    --color-texto: #e67777;     /* Rosa oscuro para el texto */
+    --fuente-inter: "Inter", sans-serif; /* Fuente Inter */
+}
+
+html {
+    font-size: 62.5%; /* Ajuste del tamaño de fuente base */
+}
+
+body {
+    background-color: var(--color-fondo); /* Color de fondo de la página */
+    font-family: var(--fuente-inter); /* Fuente utilizada en el cuerpo */
+}
+
+header {
+    margin-bottom: 5rem; /* Espacio debajo del encabezado */
+	margin-top: 40px;
+    width: 60%; /* Ancho del encabezado */
+}
+
+main {
+    display: flex;
+    justify-content: space-around; /* Espacio entre los elementos principales */
+}
+
+.seccion-formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espacio entre elementos en la sección del formulario */
+    height: 70dvh; /* Altura de la sección del formulario */
+}
+
+.entrada-formulario {
+    width: 100%; /* Ancho completo del área de entrada */
+    max-width: 577px; /* Ancho máximo del área de entrada */
+    border-color: transparent; /* Color del borde (transparente) */
+    height: 64dvh; /* Altura del área de entrada */
+    outline: none; /* Sin contorno alrededor del área de entrada */
+    background: transparent; /* Fondo transparente para el área de entrada */
+    font-size: 3.2rem; /* Tamaño de la fuente en el área de entrada */
+    color: var(--color-texto); /* Color del texto en el área de entrada */
+    margin-bottom: 3rem; /* Espacio debajo del área de entrada */
+    overflow: auto; /* Desplazamiento automático si el contenido desborda */
+}
+
+::placeholder {
+    color: var(--color-texto); /* Color del texto del marcador de posición */
+}
+
+.mensaje-alerta {
+    display: flex;
+    align-items: center; /* Alineación vertical del contenido */
+    gap: 0.7rem; /* Espacio entre el ícono y el texto */
+    font-size: 1.2rem; /* Tamaño de la fuente del mensaje de alerta */
+    margin-bottom: 1.5rem; /* Espacio debajo del mensaje de alerta */
+}
+
+.icono-advertencia {
+    max-width: 100%; /* Ancho máximo de la imagen de alerta */
+    height: auto; /* Altura automática de la imagen */
+}
+
+.contenedor-botones {
+    display: flex;
+    gap: 2rem; /* Espacio entre los botones */
+    flex-wrap: wrap; /* Ajuste de los botones en múltiples líneas si es necesario */
+}
+
+.boton-formulario {
+    background: var(--color-principal); /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    font-size: 1.6rem; /* Tamaño de la fuente del botón */
+    padding: 1rem 2rem; /* Relleno del botón */
+    width: 328px; /* Ancho del botón */
+    height: 67px; /* Alto del botón */
+    border-radius: 24px; /* Bordes redondeados del botón */
+    border: 1px solid var(--color-principal); /* Borde del botón */
+}
+
+.boton-formulario--secundario {
+    background: var(--color-acento); /* Color de fondo del botón secundario */
+    color: white; /* Color del texto del botón secundario */
+    font-size: 1.6rem; /* Tamaño de la fuente del botón secundario */
+    padding: 1rem 2rem; /* Relleno del botón secundario */
+    width: 328px; /* Ancho del botón secundario */
+    height: 67px; /* Alto del botón secundario */
+    border-radius: 24px; /* Bordes redondeados del botón secundario */
+    border: 1px solid var(--color-acento); /* Borde del botón secundario */
+}
+
+.oculto {
+    display: none; /* Oculta el elemento */
+}
+
+.resultado {
+    background-color: white; /* Color de fondo del área de resultado */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alineación centrada de los elementos */
+    justify-content: center; /* Alineación centrada verticalmente */
+    gap: 10rem; /* Espacio entre los elementos en el área de resultado */
+    height: 72dvh; /* Altura del área de resultado */
+    border-radius: 32px; /* Bordes redondeados del área de resultado */
+    max-width: 40rem; /* Ancho máximo del área de resultado */
+    width: 100%; /* Ancho completo del área de resultado */
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        flex-direction: column; /* Cambia la dirección del flujo de los elementos en pantallas pequeñas */
+    }
+    .contenedor-botones {
+        justify-content: center; /* Centra los botones en pantallas pequeñas */
+    }
+    .resultado {
+        height: auto; /* Altura automática del área de resultado en pantallas pequeñas */
+        max-width: 624px; /* Ancho máximo del área de resultado en pantallas pequeñas */
+        margin-top: 2rem; /* Espacio encima del área de resultado en pantallas pequeñas */
+        min-height: 186px; /* Altura mínima del área de resultado en pantallas pequeñas */
+    }
+    header .logo {
+        width: 73px; /* Ancho del logo en pantallas pequeñas */
+    }
+}
+
+@keyframes l9 {
+    to {
+        transform: perspective(300px) translateZ(100px); /* Movimiento de la animación */
+        opacity: 0; /* Desvanecimiento del indicador de carga */
+    }
+}
+
+.imagen-responsiva {
+    max-width: 100%; /* Ancho máximo de la imagen responsiva */
+    height: auto; /* Altura automática de la imagen */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+}

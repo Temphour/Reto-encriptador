@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Encriptador de Texto</title>
+</head>
+<body>
+    <header>
+        
+    </header>
+    <main>
+        <section class="seccion-formulario">
+            <!-- Área de texto para la entrada del usuario -->
+            <textarea class="entrada-formulario" id="textoEntrada" placeholder="Ingrese el texto aquí"></textarea>
+            <div class="mensaje-alerta">
+                <!-- Imagen de advertencia -->
+                <img class="icono-advertencia" alt="advertencia" src="./imagenes/exclamacion.svg">
+                <p>Solo letras minúsculas y sin acentos</p>
+            </div>
+            <div class="contenedor-botones">
+                <!-- Botón para encriptar el texto -->
+                <button type="button" class="boton-formulario" id="btnEncriptar">¡Encriptar!</button>
+                <!-- Botón para desencriptar el texto -->
+                <button type="button" class="boton-formulario boton-formulario--secundario" id="btnDesencriptar">¡Desencriptar!</button>
+            </div>
+        </section>
+        <section class="resultado">
+            <!-- Área de texto para mostrar el resultado -->
+            <textarea id="textoSalida" class="entrada-formulario oculto" readonly></textarea>
+            <!-- Botón para copiar el resultado al portapapeles -->
+            <button type="button" class="boton-formulario boton-formulario--secundario oculto" id="btnCopiar">Copiar</button>
+        </section>  
+    </main>
+
+    <!-- Enlaza el archivo JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
