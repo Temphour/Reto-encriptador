@@ -1,24 +1,62 @@
 :root {
-    --color-principal: #ffbfc4; /* Rosa pastel claro */
-    --color-acento: #f09292;    /* Rosa pastel más claro */
-    --color-fondo: #fef3f3;     /* Fondo rosa muy claro */
-    --color-texto: #e67777;     /* Rosa oscuro para el texto */
+    --color-principal: #fa3680; /* Rosa pastel claro */
+    --color-acento: #ff8ab6;    /* Rosa pastel más claro */
+    --color-fondo: #fdd4e3;     /* Fondo rosa muy claro */
+    --color-texto: #f16b9d;     /* Rosa oscuro para el texto */
     --fuente-inter: "Inter", sans-serif; /* Fuente Inter */
+    --color-texto-2: #293138;
+    --color-complementario: #fcc052;
+    --color-fondo-complementario: #fefdfe;
+
 }
+
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	letter-spacing: 1px;
+	line-height: 1.3;
+	font-family: var(--fuente);
+	text-decoration: none;
+}
+
+
 
 html {
     font-size: 62.5%; /* Ajuste del tamaño de fuente base */
 }
 
 body {
+    display:flex;
+    flex-direction: column;
     background-color: var(--color-fondo); /* Color de fondo de la página */
     font-family: var(--fuente-inter); /* Fuente utilizada en el cuerpo */
+    height:100%;
+    min-height: 100vh;
+    position: relative;
+    gap: 1rem;
 }
 
 header {
-    margin-bottom: 5rem; /* Espacio debajo del encabezado */
-	margin-top: 40px;
-    width: 60%; /* Ancho del encabezado */
+   	width: 100%;
+	height: auto;
+	display: flex;
+	align-items: center;
+    margin-top: 1.7%;
+    
+    margin-bottom: 2%;
+	gap: .5em;
+
+    
+}
+
+.logo{
+	max-height: 45px;
+	height: 100%;
+	min-height: 40px;
+    margin-left: 2%;
+    padding-bottom:0%;
+    margin-bottom: 0%;
 }
 
 main {
@@ -40,10 +78,11 @@ main {
     height: 64dvh; /* Altura del área de entrada */
     outline: none; /* Sin contorno alrededor del área de entrada */
     background: transparent; /* Fondo transparente para el área de entrada */
-    font-size: 3.2rem; /* Tamaño de la fuente en el área de entrada */
+    font-size: 3rem; /* Tamaño de la fuente en el área de entrada */
     color: var(--color-texto); /* Color del texto en el área de entrada */
     margin-bottom: 3rem; /* Espacio debajo del área de entrada */
     overflow: auto; /* Desplazamiento automático si el contenido desborda */
+    resize: none;
 }
 
 ::placeholder {
@@ -56,6 +95,8 @@ main {
     gap: 0.7rem; /* Espacio entre el ícono y el texto */
     font-size: 1.2rem; /* Tamaño de la fuente del mensaje de alerta */
     margin-bottom: 1.5rem; /* Espacio debajo del mensaje de alerta */
+    color: var(--color-texto-2);
+    
 }
 
 .icono-advertencia {
@@ -78,6 +119,7 @@ main {
     height: 67px; /* Alto del botón */
     border-radius: 24px; /* Bordes redondeados del botón */
     border: 1px solid var(--color-principal); /* Borde del botón */
+    cursor: pointer;
 }
 
 .boton-formulario--secundario {
@@ -89,52 +131,115 @@ main {
     height: 67px; /* Alto del botón secundario */
     border-radius: 24px; /* Bordes redondeados del botón secundario */
     border: 1px solid var(--color-acento); /* Borde del botón secundario */
+    cursor: pointer;
 }
 
 .oculto {
     display: none; /* Oculta el elemento */
 }
 
+.imagen{
+    margin-top: auto;
+    max-width:40rem;
+    height: 60%;
+}
+
+#btnCopiar{
+    background-color: transparent;
+    color:var(--color-principal);
+    font-size: 1.6rem; /* Tamaño de la fuente del botón secundario */
+    padding: 1rem 2rem; /* Relleno del botón secundario */
+    width: 328px; /* Ancho del botón secundario */
+    height: 67px; /* Alto del botón secundario */
+    border-radius: 24px; /* Bordes redondeados del botón secundario */
+    border: 1px solid var(--color-principal); /* Borde del botón secundario */
+    cursor: pointer;
+}
+
+.mensaje-inicial{
+font-family: var(--fuente-inter);
+color:#293138;
+display: flex;
+flex-direction:column;
+justify-content: center;
+align-items: center;
+}
+
+.subtitulo{
+    font-style:normal;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+
+
 .resultado {
     background-color: white; /* Color de fondo del área de resultado */
     display: flex;
     flex-direction: column;
+    align-self: start;
     align-items: center; /* Alineación centrada de los elementos */
     justify-content: center; /* Alineación centrada verticalmente */
-    gap: 10rem; /* Espacio entre los elementos en el área de resultado */
-    height: 72dvh; /* Altura del área de resultado */
+    gap: 5rem; /* Espacio entre los elementos en el área de resultado */
+    height: 80dvh; /* Altura del área de resultado */
     border-radius: 32px; /* Bordes redondeados del área de resultado */
-    max-width: 40rem; /* Ancho máximo del área de resultado */
+    max-width: 35rem; /* Ancho máximo del área de resultado */
     width: 100%; /* Ancho completo del área de resultado */
+    padding-bottom: 3%;
+    resize: none;
 }
+#textoSalida{
+    justify-content: center;
+    color:var(--color-complementario);
+}
+
+
+/* Estilo general para el footer */
+footer {
+    display: flex;                /* Usamos flexbox para centrar el contenido */
+    color:var(--color-principal);
+    justify-content: center;      /* Centra el contenido horizontalmente */
+    align-items: center;          /* Centra el contenido verticalmente */
+    height: 4em;                /* Ajusta la altura según sea necesario */
+    margin-top: 0%;
+        padding-bottom :0%;
+}
+
+/* Estilo para el texto dentro del footer */
+footer p {
+    margin: 0;                    /* Elimina márgenes por defecto del párrafo */
+}
+
 
 @media screen and (max-width: 768px) {
     main {
-        flex-direction: column; /* Cambia la dirección del flujo de los elementos en pantallas pequeñas */
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
     }
-    .contenedor-botones {
-        justify-content: center; /* Centra los botones en pantallas pequeñas */
+    .seccion-formulario{
+        width: 87%;
+    }
+
+    .contenedor-botones{
+      justify-content: center;
     }
     .resultado {
-        height: auto; /* Altura automática del área de resultado en pantallas pequeñas */
-        max-width: 624px; /* Ancho máximo del área de resultado en pantallas pequeñas */
-        margin-top: 2rem; /* Espacio encima del área de resultado en pantallas pequeñas */
-        min-height: 186px; /* Altura mínima del área de resultado en pantallas pequeñas */
+      height: auto;
+      max-width: 624px;
+      margin-top: 2rem;
+      min-height: 186px;
     }
-    header .logo {
-        width: 73px; /* Ancho del logo en pantallas pequeñas */
+    .imagen {
+      display: none;
     }
-}
-
-@keyframes l9 {
+    .logo {
+      width: 73px;
+    }
+  }
+  @keyframes l9 {
     to {
-        transform: perspective(300px) translateZ(100px); /* Movimiento de la animación */
-        opacity: 0; /* Desvanecimiento del indicador de carga */
+      transform: perspective(300px) translateZ(100px);
+      opacity: 0;
     }
-}
-
-.imagen-responsiva {
-    max-width: 100%; /* Ancho máximo de la imagen responsiva */
-    height: auto; /* Altura automática de la imagen */
-    display: block; /* Asegura que la imagen se comporte como un bloque */
-}
+  }

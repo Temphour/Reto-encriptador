@@ -1,14 +1,40 @@
-// Añade un evento que escucha el clic en el botón con id 'btnEncriptar'.
-// Cuando se hace clic en el botón, se llama a la función 'encriptarTexto'.
+// Añade un evento que escucha el clic en los botones.
+// Cuando se hace clic en el botón, se llama a la respectiva funcion, encriptarTexto, desencriptarTexto, copiar texto.
 document.getElementById('btnEncriptar').addEventListener('click', encriptarTexto);
-
-// Añade un evento que escucha el clic en el botón con id 'btnDesencriptar'.
-// Cuando se hace clic en el botón, se llama a la función 'desencriptarTexto'.
 document.getElementById('btnDesencriptar').addEventListener('click', desencriptarTexto);
-
-// Añade un evento que escucha el clic en el botón con id 'btnCopiar'.
-// Cuando se hace clic en el botón, se llama a la función 'copiarTexto'.
 document.getElementById('btnCopiar').addEventListener('click', copiarTexto);
+
+//Eventos que escuchan el clic de los botones, llaman la funcion ocultar texto e imagenes (en el cuadro resultado)
+
+document.getElementById('btnEncriptar').addEventListener('click', OcultarImagen);
+document.getElementById('btnDesencriptar').addEventListener('click', OcultarImagen);
+document.getElementById('btnEncriptar').addEventListener('click', OcultarTexto);
+document.getElementById('btnDesencriptar').addEventListener('click', OcultarTexto);
+
+// Función para ocultar la imagen
+function OcultarImagen() {
+    // Selecciona la imagen usando su id
+    const imagen = document.getElementById('imagen');
+    
+    // Verifica que la imagen existe antes de intentar modificar su estilo
+    if (imagen) {
+        imagen.style.display = 'none';
+    }
+}
+
+
+//Funcion para ocultar texto cuando se encripte o desencripte un texto
+function OcultarTexto() {
+    // Selecciona el texto usando su id
+    const subtitulo = document.getElementById('subtitulo');
+    const parrafo = document.getElementById('parrafo');
+    const mensajeinicial = document.getElementById('mensaje-inicial');
+    // Verifica que el mensaje existe antes de intentar modificar su estilo
+    if (mensajeinicial) {
+        parrafo.style.display = 'none';
+        subtitulo.style.display = 'none';
+    }
+}
 
 // Función para encriptar el texto
 function encriptarTexto() {

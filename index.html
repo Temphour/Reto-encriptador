@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Encriptador de Texto</title>
 </head>
 <body>
     <header>
-        
+    <img id="logo" class="logo" src="./imagenes/logoalura_yellow.png">
     </header>
     <main>
         <section class="seccion-formulario">
@@ -22,20 +23,31 @@
             </div>
             <div class="contenedor-botones">
                 <!-- Botón para encriptar el texto -->
-                <button type="button" class="boton-formulario" id="btnEncriptar">¡Encriptar!</button>
+                <button type="button" class="boton-formulario" id="btnEncriptar">Encriptar</button>
                 <!-- Botón para desencriptar el texto -->
-                <button type="button" class="boton-formulario boton-formulario--secundario" id="btnDesencriptar">¡Desencriptar!</button>
+                <button type="button" class="boton-formulario boton-formulario--secundario" id="btnDesencriptar">Desencriptar</button>
             </div>
         </section>
         <section class="resultado">
+            <img id="imagen" class="imagen" src="./imagenes/descifrar.jpg">
             <!-- Área de texto para mostrar el resultado -->
+             <div id="mensaje-inicial" class="mensaje-inicial">
+                <h2 id="subtitulo" class ="subtitulo">Ningún texto fue encontrado</h2>
+                <p id="parrafo" class="parrafo">Ingresa el texto que desees encriptar o desencriptar.</p>
+             <!-- Texto inicial ningun mensaje encontrado -->
+            </div>
             <textarea id="textoSalida" class="entrada-formulario oculto" readonly></textarea>
             <!-- Botón para copiar el resultado al portapapeles -->
             <button type="button" class="boton-formulario boton-formulario--secundario oculto" id="btnCopiar">Copiar</button>
-        </section>  
+        </section>
     </main>
+      
+    <footer class="footer">
+        <p>Desarrollado por @Temphour</p>
+    </footer>
+
+</body>
 
     <!-- Enlaza el archivo JavaScript -->
     <script src="app.js"></script>
-</body>
 </html>
