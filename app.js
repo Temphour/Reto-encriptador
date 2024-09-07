@@ -6,10 +6,10 @@ document.getElementById('btnCopiar').addEventListener('click', copiarTexto);
 
 // Función para validar el texto de entrada
 function validarTexto(texto) {
-    const regex = /^[a-z]+$/;  // Solo letras minúsculas
-    // Elimina acentos y verifica si el texto está compuesto solo por letras minúsculas
+    const regex = /^[a-z\s]+$/;  // Solo letras minúsculas y espacios
+    // Elimina acentos y verifica si el texto está compuesto solo por letras minúsculas y espacios
     const textoNormalizado = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Elimina acentos
-    return regex.test(textoNormalizado) && texto === textoNormalizado; // Verifica letras minúsculas y ausencia de acentos
+    return regex.test(textoNormalizado) && texto === textoNormalizado; // Verifica letras minúsculas, ausencia de acentos y espacios
 }
 
 // Función para mostrar un mensaje de error y limpiar el texto de salida
