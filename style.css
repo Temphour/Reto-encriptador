@@ -175,6 +175,7 @@ align-content: center;
 }
 
 .resultado {
+    display:flex;
     position: relative;
     background-color: var(--color-fondo-complementario); 
     flex-direction: column;
