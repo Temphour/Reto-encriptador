@@ -187,6 +187,7 @@ align-content: center;
     max-width: 35rem; 
     width: 100%;
     resize: none;
+    padding-bottom: 2em;
 }
 
 #textoSalida{
